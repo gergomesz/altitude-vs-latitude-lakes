@@ -38,7 +38,7 @@ index.html            the website
 assets/               style.css, app.js (dark mode, "?" boxes), calc.js (calculator), data.js (lakes and every model)
 figures/light, dark   figures in both colour themes
 figures/report        figures from the report
-downloads/            report (PDF), LaTeX source, CSV tables
+downloads/            report (PDF), CSV tables
 matlab/               MATLAB code: one script per figure, plus loading and model-testing steps (see matlab/README.txt)
 python/               the Python analysis behind every number, figure and this site
 .nojekyll             tells GitHub Pages to serve the files as they are
