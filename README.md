@@ -1,6 +1,4 @@
-# Height or Latitude? What sets the surface temperature of the world's lakes
-
-**NASA Space Apps Challenge 2026 · Earth System Trend Detective**
+# Altitude or Latitude? What sets the surface temperature of the world's lakes
 
 Going north and going uphill both make a lake colder, but by how much each? This project uses Landsat 8 surface temperatures for about a million lakes (LakeTEMP, 2013–2021) to measure how latitude, height and the ocean set lake temperature. It turns the results into equations that predict any lake's July temperature, every month of its year, and whether it freezes.
 
