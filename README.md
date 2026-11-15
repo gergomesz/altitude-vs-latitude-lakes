@@ -1,6 +1,6 @@
 # Altitude or Latitude? What sets the surface temperature of the world's lakes
 
-Going north and going uphill both make a lake colder, but by how much each? This project uses Landsat 8 surface temperatures for about a million lakes (LakeTEMP, 2013–2021) to measure how latitude, height and the ocean set lake temperature. It turns the results into equations that predict any lake's July temperature, every month of its year, and whether it freezes.
+Going north and going uphill both make a lake colder, but by how much each? This project uses Landsat 8 surface temperatures for about a million lakes (LakeTEMP, 2013–2021) to measure how latitude, altitude and the ocean set lake temperature. It turns the results into equations that predict any lake's July temperature, every month of its year, and whether it freezes.
 
 
 ## What's on the site
@@ -14,20 +14,20 @@ Going north and going uphill both make a lake colder, but by how much each? This
     - whether the lake is likely to freeze, and for how long.
   - Lakes from the list also show what Landsat measured, so you can see how close the predictions are.
 - **Every result**, as plates with figures (light and dark versions). Each figure has a short "how to read it / what it shows" note.
-- **The full report, spreadsheet, MATLAB code and Python code** to check or rebuild everything.
+- **The full report, MATLAB code and Python code** to check or rebuild everything.
 
 ## Main findings
 
 | | |
 |---|---|
 | Where latitude starts to cool July lakes | **33°N**; flat from the equator up to there |
-| Lake-to-lake variation explained, latitude vs height | **41% vs 3%** in the north; **28% vs 16%** in the south |
-| Height equal to one degree of latitude (north of 33°N) | about **80–130 m** |
+| Lake-to-lake variation explained, latitude vs altitude | **41% vs 3%** in the north; **28% vs 16%** in the south |
+| Altitude equal to one degree of latitude (north of 33°N) | about **80–130 m** |
 | Inland vs coastal lakes (north of 33°N) | up to **5 °C** warmer inland |
 | Best July model on lakes it never saw | R² **0.91**, typical error **0.8 °C** |
 | Big lakes (≥ 500 km²) | about 5 °C colder than the simple model; the size adjustment halves the error |
 | Whole year, lakes that never freeze | one yearly wave; geography predicts every month with R² **0.93** |
-| Southern Hemisphere | same cooling with height; break earlier (27.5°S); weaker coast effect |
+| Southern Hemisphere | same cooling with altitude; break earlier (27.5°S); weaker coast effect |
 
 The [full report](downloads/Lake_Temperature_Report.pdf) has all 25 findings with their equations.
 
@@ -38,7 +38,7 @@ index.html            the website
 assets/               style.css, app.js (dark mode, "?" boxes), calc.js (calculator), data.js (lakes and every model)
 figures/light, dark   figures in both colour themes
 figures/report        figures from the report
-downloads/            report (PDF), spreadsheet (Excel), LaTeX source, CSV tables
+downloads/            report (PDF), LaTeX source, CSV tables
 matlab/               MATLAB code: one script per figure, plus loading and model-testing steps (see matlab/README.txt)
 python/               the Python analysis behind every number, figure and this site
 .nojekyll             tells GitHub Pages to serve the files as they are
@@ -46,7 +46,7 @@ python/               the Python analysis behind every number, figure and this s
 
 ## How the calculator works
 
-- **July (Models 1–4).** Straight-line equations in latitude, height, distance to the sea, depth, area and continent, split at 33°N.
+- **July (Models 1–4).** Straight-line equations in latitude, altitude, distance to the sea, depth, area and continent, split at 33°N.
   - Models 2 and 4 add a nearby-lakes correction: the average miss of known lakes in the surrounding 3 × 3 block of 1° squares, scaled by n / (n + 20).
   - Every model was tested on lakes it was not fitted to (5-fold cross-validation by 1° square).
 - **Freezing.** One equation per month, fitted to all 1.1 million lakes with frozen months counted as 0 °C.
