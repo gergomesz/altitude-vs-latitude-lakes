@@ -33,18 +33,6 @@ Going north and going uphill both make a lake colder, but by how much each? This
 
 The [full report](downloads/Lake_Temperature_Report.pdf) has all 25 findings with their equations.
 
-## Put it online with GitHub Pages
-
-1. Create a new **public** repository on GitHub.
-2. Upload everything in this folder, keeping the folders as they are. On the repository page, choose **Add file → Upload files** and drag the contents in.
-3. Go to **Settings → Pages**.
-   - Source: **Deploy from a branch**.
-   - Branch: **main**, folder **/ (root)**.
-   - Click **Save**.
-4. After a minute the site is live at the address shown on that page.
-
-To try it on your own computer, just open `index.html`.
-
 ## Folders
 
 ```
@@ -90,6 +78,6 @@ python/               the Python analysis behind every number, figure and this s
 ## Limits
 
 - **What Landsat measures:** the top fraction of a millimetre of water, in the late morning, on clear days.
-- **Time span:** 2013–2021 is a snapshot, not a trend.
+- **Time span:** 2013–2021 is a snapshot, not a long-term trend. 
 - **Where the lakes are:** most are in Canada and Scandinavia, so hemisphere-wide numbers lean toward them.
 - **Where the models are weakest:** they predict typical lakes well, but the largest and deepest lakes worst.
