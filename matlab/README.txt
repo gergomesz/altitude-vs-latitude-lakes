@@ -1,7 +1,7 @@
 LAKE TEMPERATURE: HEIGHT OR LATITUDE?  -  MATLAB version of every graph
 
 WHAT YOU NEED
-  MATLAB R2019b or newer. No toolboxes.
+  MATLAB R2019b or newer.
   laketemp_clean.csv.gz  (the 50 MB file laketemp_filter.py made)
 
 STEPS
