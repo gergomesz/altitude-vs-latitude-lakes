@@ -4,7 +4,6 @@
 
 Going north and going uphill both make a lake colder, but by how much each? This project uses Landsat 8 surface temperatures for about a million lakes (LakeTEMP, 2013–2021) to measure how latitude, height and the ocean set lake temperature. It turns the results into equations that predict any lake's July temperature, every month of its year, and whether it freezes.
 
-**Live site:** `https://<your-username>.github.io/<repo-name>/`, once GitHub Pages is switched on (see below).
 
 ## What's on the site
 
