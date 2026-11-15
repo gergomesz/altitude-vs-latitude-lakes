@@ -222,7 +222,7 @@ code { font-size: 12.5px; background: var(--wash); padding: 1px 4px; border-radi
 }
 
 
-.hero-intro { display: grid; gap: 14px; max-width: 68ch; }
+.hero-intro { display: grid; gap: 14px; width: 100%; text-align: center; }
 .hero-intro p { margin: 0; color: var(--ink-2); font-size: 15.5px; line-height: 1.7; }
 .hero-intro .epigraph { font-family: var(--font-math); color: var(--ink); font-size: clamp(19px, 2.2vw, 23px); line-height: 1.45; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
 .hero-intro .epigraph i { font-style: italic; }
