@@ -41,20 +41,20 @@
     const K1 = ci ? b1["K_" + cont] : 0, K3 = ci ? b3["K_" + cont] : 0;
     const half = L.lat > 33 ? "north of 33°N" : "south of 33°N";
     const m1 = [["Constant", "starting value " + half, b1.const], ["+ latitude", b1.lat.toFixed(3) + " × " + L.lat.toFixed(2) + "°", b1.lat * L.lat],
-      ["+ height", b1.h.toFixed(2) + " × " + h.toFixed(3) + " km", b1.h * h], ["+ distance to sea", b1.C.toFixed(2) + " × C (" + C.toFixed(3) + ")", b1.C * C],
+      ["+ altitude", b1.h.toFixed(2) + " × " + h.toFixed(3) + " km", b1.h * h], ["+ distance to sea", b1.C.toFixed(2) + " × C (" + C.toFixed(3) + ")", b1.C * C],
       ["+ continent shift", cont + (ci ? "" : " (baseline)"), K1]];
     const eq1 = m1.reduce((s, r) => s + r[2], 0);
     if (L.area >= 500) m1.push(["+ big-lake adjustment", "area " + Math.round(L.area).toLocaleString("en") + " km²", big("M3")]);
     const m2 = [["Model 1 equation", "before its big-lake adjustment", eq1], ["+ nearby-lakes correction", "1° square " + cell + (DATA.corr[cell] ? "" : " (no known lakes nearby)"), corr[0]]];
     if (L.area >= 500) m2.push(["+ big-lake adjustment", "Model 2 version", big("M4")]);
     const m3 = [["Constant", "starting value " + half, b3.const], ["+ latitude", b3.lat.toFixed(3) + " × " + L.lat.toFixed(2) + "°", b3.lat * L.lat],
-      ["+ height", b3.h.toFixed(2) + " × h" + (hp > 0 ? " " + sgn(b3.h_plus) + " × h⁺" : ""), b3.h * h + b3.h_plus * hp],
+      ["+ altitude", b3.h.toFixed(2) + " × h" + (hp > 0 ? " " + sgn(b3.h_plus) + " × h⁺" : ""), b3.h * h + b3.h_plus * hp],
       ["+ distance to sea", b3.C.toFixed(2) + " × C", b3.C * C],
       ["+ depth and size", b3.D.toFixed(2) + " × D (" + D.toFixed(2) + ") " + sgn(b3.A) + " × A (" + A.toFixed(2) + ")", b3.D * D + b3.A * A],
       ["+ continent shift", cont, K3]];
     const zone = 5 * Math.floor((L.lat - 1e-9) / 5), z = DATA.zt[zone + "|" + ci];
     const m4 = [["Starting value", "zone " + zone + "–" + (zone + 5) + "°N, " + cont + (z[0] ? "" : " (uses Model 3's numbers)"), z[1] + z[2] * (L.lat - (zone + 2.5))],
-      ["+ height", z[3].toFixed(2) + " × h" + (hp > 0 ? " " + sgn(z[4]) + " × h⁺" : ""), z[3] * h + z[4] * hp], ["+ distance to sea", z[5].toFixed(2) + " × C", z[5] * C],
+      ["+ altitude", z[3].toFixed(2) + " × h" + (hp > 0 ? " " + sgn(z[4]) + " × h⁺" : ""), z[3] * h + z[4] * hp], ["+ distance to sea", z[5].toFixed(2) + " × C", z[5] * C],
       ["+ depth and size", z[6].toFixed(2) + " × D " + sgn(z[7]) + " × A", z[6] * D + z[7] * A], ["+ nearby-lakes correction", "1° square " + cell, corr[1]]];
     const tot = (rows) => rows.reduce((s, r) => s + r[2], 0);
     return { steps: [m1, m2, m3, m4], preds: [m1, m2, m3, m4].map(tot), v: { h, hp, C, D, A, cont, cell, half } };
