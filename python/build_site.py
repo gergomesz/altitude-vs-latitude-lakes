@@ -30,15 +30,15 @@ def plate(pid, inner, k):
     return f'<section class="plate" id="{pid}">\n{inner}\n<div class="plate-foot"><span>{FOOT}</span><span>{k:02d} / NN</span></div>\n</section>'
 
 # 01 hero
-plates.append(("overview", head("overview", "Height or Latitude?", "What sets the surface temperature of the world's lakes, in summer and through the year",
-  "Going north and going uphill both make a lake colder, but by how much each? This project takes about a million lakes measured from space, works out how much latitude, height and the nearby ocean each cool a lake, and turns that into equations that predict any lake's temperature. You can try them on any lake in the calculator below.", h1=True) + f"""
+plates.append(("overview", head("overview", "Altitude or Latitude?", "What sets the surface temperature of the world's lakes, in summer and through the year",
+  "Going north and going uphill both make a lake colder, but by how much each? This project takes about a million lakes measured from space, works out how much latitude, altitude and the nearby ocean each cool a lake, and turns that into equations that predict any lake's temperature. You can try them on any lake in the calculator below.", h1=True) + f"""
 <div class="hero-intro">
-  <p class="epigraph">The air cools 6.5 °C for every kilometre you climb. A lake is not air: it sits in the sun, stores heat and has its own seasons.</p>
+  <p class="epigraph">There are two ways to walk into the cold: climb a mountain, or travel toward the pole. Both journeys end in winter, yet they are not the same journey. The air keeps a simple rule, losing 6.5 °C for every kilometre of altitude. A lake keeps no such rule. It gathers the sun, holds on to summer, and lives by seasons of its own. To ask which journey a lake feels more is to ask what really makes a place what it is: how far it stands from the equator, or how close it stands to the sky.</p>
   <p>LakeTEMP (Korver et al., 2024) averaged nine years of Landsat 8 surface temperatures, 2013–2021, for every lake it could see. After quality checks, 1,067,869 natural lakes between the equator and 70°N are used for July, 30,203 southern lakes for January, and 1.1 million lakes for the whole year. The question: <strong>which matters more, latitude or altitude, where does that change, and how well can a few numbers predict a lake's temperature?</strong></p>
 </div>
 <div class="hero-figs">
   <div><div class="v">33°N</div><div class="k">where latitude starts to cool July lakes</div></div>
-  <div><div class="v">41% · 3%</div><div class="k">variation explained by latitude · height (north)</div></div>
+  <div><div class="v">41% · 3%</div><div class="k">variation explained by latitude · altitude (north)</div></div>
   <div><div class="v">{H['MA']['r2']*100:.0f}%</div><div class="k">of July temperature predicted, unseen lakes</div></div>
   <div><div class="v">{SJ['year_curve']['r2']*100:.0f}%</div><div class="k">of every month predicted from geography</div></div>
 </div>
@@ -73,37 +73,37 @@ plates.append(("calculator", head("calculator", "Lake calculator", "Pick a lake,
 
 # 03 which matters more
 plates.append(("which", head("which", "Which matters more?", "Latitude and altitude, one lake at a time",
-  "Picture every lake as a dot on a chart of how far north it is against how high it is, coloured by its July temperature. If only latitude mattered, colour would change left to right only; if only height mattered, bottom to top only. The lines of equal temperature lean, so both matter, and how much they lean tells you how many metres of height equal one degree of latitude.") + f"""
+  "Picture every lake as a dot on a chart of how far north it is against how high it is, coloured by its July temperature. If only latitude mattered, colour would change left to right only; if only altitude mattered, bottom to top only. The lines of equal temperature lean, so both matter, and how much they lean tells you how many metres of altitude equal one degree of latitude.") + f"""
 {fig(3, "f1_lat_alt_grid.png")}
 <div class="plate-body">{fig(4, "f12_variance_both.png")}
-<div class="notes"><p><span class="kicker">Latitude wins on reach.</span> On its own, height explains almost nothing in the north (0%), because the high lakes (Tibet, the Pamirs, the southern Rockies) sit far south, where lakes are warm anyway. Once latitude is known, height adds 3.4% and latitude 41.1%.</p>
-<p><span class="kicker">Height wins per unit.</span> North of 33°N, about <strong>80–130 m of height</strong> cools a lake as much as one degree of latitude.</p>
-<p><span class="kicker">The south is different.</span> Height explains <strong>16%</strong> of southern lake-to-lake variation against 3% in the north. The cooling per km is the same; the south simply has many more high lakes (Andes, East Africa).</p></div></div>"""))
+<div class="notes"><p><span class="kicker">Latitude wins on reach.</span> On its own, altitude explains almost nothing in the north (0%), because the high lakes (Tibet, the Pamirs, the southern Rockies) sit far south, where lakes are warm anyway. Once latitude is known, altitude adds 3.4% and latitude 41.1%.</p>
+<p><span class="kicker">Altitude wins per unit.</span> North of 33°N, about <strong>80–130 m of altitude</strong> cools a lake as much as one degree of latitude.</p>
+<p><span class="kicker">The south is different.</span> Altitude explains <strong>16%</strong> of southern lake-to-lake variation against 3% in the north. The cooling per km is the same; the south simply has many more high lakes (Andes, East Africa).</p></div></div>"""))
 
 # 04 where latitude starts to matter
 plates.append(("break", head("break", "Where latitude starts to matter", "A flat tropical band, then a steady fall",
-  "Cut the hemisphere into 5° strips and measure, in each strip, how much a degree north and a kilometre up cool a lake. Near the equator a degree north does nothing; from about 33°N it starts to cost about half a degree. Height costs about the same everywhere.") + f"""
+  "Cut the hemisphere into 5° strips and measure, in each strip, how much a degree north and a kilometre up cool a lake. Near the equator a degree north does nothing; from about 33°N it starts to cost about half a degree. Altitude costs about the same everywhere.") + f"""
 {fig(6, "f4_sliding_band.png")}
 <div class="fig-pair">{fig(5, "f3_zone_coefficients.png")}{fig(2, "f11_zone_widths.png")}</div>
 <div class="plate-body">{fig(7, "f10_robustness.png")}<div class="notes"><p><span class="kicker">Why 33°N?</span> In July the sun is still high at mid-latitudes and the days are longer, which makes up for the lower sun. July sunlight therefore stays almost tropical up to about 35°, and lake temperature does too.</p><p><span class="kicker">Why July?</span> Comparing lakes in the same month keeps the comparison fair: further north, high lakes are only open in summer, so a yearly average is really a summer average.</p></div></div>"""))
 
 # 05 alps
 plates.append(("alps", head("alps", "Same latitude, different mountains", "The Alps latitude band around the world, and the Alps against southern Canada",
-  "Take one narrow strip of latitude, the one the Alps sit in, and look at it all the way round the world. Lakes at the same latitude cool with height at very different rates in different regions, and the leftover pattern (red warmer, blue colder than predicted) points to the ocean.") + f"""
+  "Take one narrow strip of latitude, the one the Alps sit in, and look at it all the way round the world. Lakes at the same latitude cool with altitude at very different rates in different regions, and the leftover pattern (red warmer, blue colder than predicted) points to the ocean.") + f"""
 <div class="fig-pair">{fig(8, "f6_alps_scatter.png")}{fig(9, "f7_alps_regions.png")}</div>
 {fig(10, "f5_alps_band_residuals.png")}
 <div class="plate-body">{fig(11, "f8_grid2x2.png")}<div class="notes"><p><span class="kicker">The trade-off.</span> Moving 4.7° north, from the Alps band to southern Canada, costs about 2 °C. Climbing about 1.8 km costs about 7.7 °C, at both latitudes.</p></div></div>"""))
 
 # 06 ocean
 plates.append(("ocean", head("ocean", "The ocean", "The third control: distance to the sea",
-  "Seawater changes temperature slowly, so in summer it is colder than the land and cools everything near it. North of 33°N a lake on the coast is several degrees colder than one far inland at the same latitude and height.") + f"""
+  "Seawater changes temperature slowly, so in summer it is colder than the land and cools everything near it. North of 33°N a lake on the coast is several degrees colder than one far inland at the same latitude and altitude.") + f"""
 {fig(12, report="r12_coast.png")}"""))
 
 # 07 models
 mrows = "".join(f"<tr><td class='em'>{nm}</td><td class='num'>{H[k]['r2']*100:.1f}%</td><td class='num'>{H[k]['typical']:.2f}</td><td class='num'>{H[k]['within1']*100:.0f}%</td><td class='num'>{H[k]['within2']*100:.0f}%</td></tr>"
                 for k, nm in [("M3", "Model 1 · 3 variables + continent"), ("M4", "Model 2 · Model 1 + nearby lakes"), ("M7", "Model 3 · 7 variables"), ("MA", "Model 4 · all variables + nearby lakes")])
 plates.append(("models", head("models", "Four prediction models", "From three variables to the full model, tested on lakes they never saw",
-  "Each model is an equation: start from a number, add something for latitude, height, distance to the sea and so on. To test them fairly, the lakes were split into five groups by location and each group was predicted by an equation built only from the other four. The nearby-lakes correction adds the average miss of known lakes around the one you want.") + f"""
+  "Each model is an equation: start from a number, add something for latitude, altitude, distance to the sea and so on. To test them fairly, the lakes were split into five groups by location and each group was predicted by an equation built only from the other four. The nearby-lakes correction adds the average miss of known lakes around the one you want.") + f"""
 <div class="tablewrap"><table><thead><tr><th>Model</th><th class="num">Variation explained</th><th class="num">Typical error (°C)</th><th class="num">Within ±1 °C</th><th class="num">Within ±2 °C</th></tr></thead><tbody>{mrows}</tbody></table></div>
 <p class="caption">Accuracy on 1,067,869 lakes, each predicted by a model that was not fitted to it.</p>
 {fig(13, report="r13_predicted_vs_actual.png")}
@@ -117,12 +117,12 @@ plates.append(("big", head("big", "Big lakes", "Lakes of 500 km² or more stay c
 
 # 09 south
 plates.append(("south", head("south", "The Southern Hemisphere", "January, the southern summer, for 30,203 lakes",
-  "Does the same story hold south of the equator? Mostly: height costs the same, and the tropics are flat again. But the break comes earlier and the coast matters less, because there is little land at those latitudes and all of it is near cold ocean.") + f"""
+  "Does the same story hold south of the equator? Mostly: altitude costs the same, and the tropics are flat again. But the break comes earlier and the coast matters less, because there is little land at those latitudes and all of it is near cold ocean.") + f"""
 {fig(17, report="r17_hemispheres.png")}
 <div class="tablewrap"><table><thead><tr><th></th><th>North (July)</th><th>South (January)</th></tr></thead><tbody>
 <tr><td class="em">Break latitude</td><td>{HM['break_north']['bp']:.1f}°</td><td>{HM['break_south']['bp']:.1f}°</td></tr>
 <tr><td class="em">Cooling per degree beyond the break</td><td>{HM['break_north']['after']:.2f} °C</td><td>{HM['break_south']['after']:.2f} °C</td></tr>
-<tr><td class="em">Height explains (once latitude is known)</td><td>{HM['r2_north']['alt_unique']*100:.0f}%</td><td>{HM['r2_south']['alt_unique']*100:.0f}%</td></tr>
+<tr><td class="em">Altitude explains (once latitude is known)</td><td>{HM['r2_north']['alt_unique']*100:.0f}%</td><td>{HM['r2_south']['alt_unique']*100:.0f}%</td></tr>
 <tr><td class="em">Northern equation used on southern lakes</td><td>—</td><td>R² {HM['transfer']['r2']:.2f}, {abs(HM['transfer']['bias']):.1f} °C too warm</td></tr></tbody></table></div>"""))
 
 # 10 year
@@ -139,7 +139,7 @@ plates.append(("year", head("year", "Through the whole year", "One wave per lake
 <p class="eqline"><span class="label">Half-swing</span> a = {eqA}</p>
 <p class="eqline"><span class="label">Warmest month</span> p = {eqP}</p>
 <p class="eqline"><span class="label">Ice-free days</span> N = {eqO}</p>
-<p class="small">φ = distance from the equator (°), h = height (km), C = log₁₀(km to sea + 10), D = log₁₀(depth m) − log₁₀(3.3), A = log₁₀(area km²) − log₁₀(0.23), S = 1 for southern lakes, (x)<sup>+</sup> = x if positive, else 0. On unseen lakes the wave predicts every month with R² {SJ['year_curve']['r2']:.2f} (typical error {SJ['year_curve']['mae']:.1f} °C); the ice-free-days equation has R² {SJ['open_days']['r2']:.2f}.</p></div>
+<p class="small">φ = distance from the equator (°), h = altitude (km), C = log₁₀(km to sea + 10), D = log₁₀(depth m) − log₁₀(3.3), A = log₁₀(area km²) − log₁₀(0.23), S = 1 for southern lakes, (x)<sup>+</sup> = x if positive, else 0. On unseen lakes the wave predicts every month with R² {SJ['year_curve']['r2']:.2f} (typical error {SJ['year_curve']['mae']:.1f} °C); the ice-free-days equation has R² {SJ['open_days']['r2']:.2f}.</p></div>
 {fig(18, report="r18_yearly_cycle.png")}
 {fig(19, report="r19_timing_ice.png")}"""))
 
@@ -149,11 +149,10 @@ plates.append(("findings", head("findings", "Everything found", "Every result, e
 
 # 12 downloads
 plates.append(("files", head("files", "Report, data and code", "Everything needed to check or rebuild the results",
-  "The full report explains every figure and equation. The spreadsheet has every coefficient and a calculator. The MATLAB and Python code rebuild every number and figure from the LakeTEMP data.") + """
+  "The full report explains every figure and equation. The MATLAB and Python code rebuild every number and figure from the LakeTEMP data.") + """
 <div class="cols">
 <div><h3>Read</h3><ul>
 <li><a href="downloads/Lake_Temperature_Report.pdf">Full report (PDF, 27 pages)</a>: every figure explained, all equations, accuracy tables</li>
-<li><a href="downloads/Lake_Temperature_Models.xlsx">Spreadsheet (Excel)</a>: all coefficients, the correction map, and a calculator for Models 1–4</li>
 <li><a href="downloads/Lake_Report_Overleaf.zip">LaTeX source</a> for the report (Overleaf-ready)</li></ul></div>
 <div><h3>Rebuild</h3><ul>
 <li><a href="matlab/">MATLAB code</a>: one script per figure, plus the loading and model-testing steps (see <code>matlab/README.txt</code>)</li>
@@ -164,14 +163,14 @@ plates.append(("files", head("files", "Report, data and code", "Everything neede
 <div class="notes wide"><p><span class="kicker">Limits.</span> Landsat measures the top fraction of a millimetre of water in the late morning on clear days. 2013–2021 is a snapshot, not a trend. Most lakes are in Canada and Scandinavia, so hemisphere-wide numbers lean toward them. The models predict typical lakes well but the largest and deepest lakes worst. The yearly and ice predictions in the calculator extend equations fitted on never-frozen lakes and are approximate.</p></div>"""))
 
 body = "\n".join(plate(pid, inner, k + 1) for k, (pid, inner) in enumerate(plates)).replace("/ NN", f"/ {len(plates):02d}")
-nav = "".join(f'<a href="#{pid}">{lbl}</a>' for pid, lbl in [("calculator", "Calculator"), ("which", "Latitude vs height"), ("break", "33°N"), ("alps", "Alps"), ("ocean", "Ocean"),
+nav = "".join(f'<a href="#{pid}">{lbl}</a>' for pid, lbl in [("calculator", "Calculator"), ("which", "Latitude vs altitude"), ("break", "33°N"), ("alps", "Alps"), ("ocean", "Ocean"),
              ("models", "Models"), ("big", "Big lakes"), ("south", "South"), ("year", "Year & ice"), ("findings", "Findings"), ("files", "Files")])
 html = f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Height or Latitude? · Lake temperature calculator</title>
+<title>Altitude or Latitude? · Lake temperature calculator</title>
 <meta name="description" content="What sets the surface temperature of the world's lakes, with a calculator for any lake: July temperature, every month of the year, and ice.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=STIX+Two+Text:ital@0;1&display=swap">
