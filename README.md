@@ -62,6 +62,13 @@ python/               the Python analysis behind every number, figure and this s
 
 - **Python** (`python/`):
   - The scripts read `laketemp_clean.parquet`, made from the LakeTEMP CSV by `laketemp_filter.py`.
+The Filter Itself - * **Statistical Method (`stat_method == 0`):** Only retains lakes modeled using the standard trendline method; drops records using fallback or alternative estimation methods.
+- * **Permanence (`intermittency == 0`):** Only retains permanent water bodies; removes intermittent or seasonal lakes that periodically dry up.
+- * **Minimum Observations (`n_obs >= 46`):** Requires at least 46 valid satellite observations per lake; discards lakes with sparse temporal coverage.
+- * **Waterbody Type (`Lake_type == 1`):** Only keeps natural lakes; excludes man-made reservoirs (`Lake_type == 2`) and regulated lakes (`Lake_type == 3`).
+- * **Surface Area (`Lake_area >= MIN_AREA`):** Filters out lakes smaller than the optional command-line threshold in $\text{km}^2$ (defaults to `0.0` if no second argument is provided, keeping all sizes).
+- * **Invalid Numeric Handling:** Any row containing missing, blank, or non-numeric values in the required filter fields (`stat_method`, `intermittency`, `n_obs`, `Lake_type`, `Lake_area`) fails the numeric check and is automatically excluded.
+- * **Column Reduction:** Drops all raw metadata and auxiliary columns except the 28 specified fields (`Hylak_id`, `center_lat`, `center_long`, `Lake_name`, `Country`, `Continent`, `Lake_type`, `Lake_area`, `Depth_avg`, `Elevation`, `n_obs`, `Tyear_mean`, `Tyear_mean_open`, `Tyear_min`, `Tyear_max`, `ice_days`, and `Tmonth_mean_01` through `Tmonth_mean_12`).
   - `models.py` and `bigadj.py` build the July models.
   - `seas_prep.py`, `seas_fit.py`, `seas_extra.py` and `monthly_model.py` build the yearly and ice models.
   - `build_site_data.py` and `build_site.py` write this website.
