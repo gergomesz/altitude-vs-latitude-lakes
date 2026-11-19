@@ -152,7 +152,7 @@ ol.key li, ol.cat > li {{ margin-bottom: 4pt; }}
 </style></head><body>
 
 <h1>Height or Latitude? What sets the surface temperature of the world's lakes, in summer and through the year</h1>
-<div class="sub">NASA Space Apps Challenge 2026 · Earth System Trend Detective · November 2026</div>
+<div class="sub">November 2026</div>
 
 <div class="abstract"><b>Summary.</b> Using Landsat 8 surface temperatures for 1,067,869 lakes (LakeTEMP, 2013–2021), we test whether latitude or altitude
 controls July lake temperature, where that balance changes, and how well simple equations predict it. Latitude explains far more of the variation
