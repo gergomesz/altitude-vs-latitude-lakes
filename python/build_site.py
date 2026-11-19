@@ -182,12 +182,11 @@ html = f"""<!doctype html>
   <span class="src">LakeTEMP · Landsat 8 · HydroLAKES</span>
   <div class="tb-right">
     <button id="theme-toggle" class="theme-btn" type="button" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 1.8 A6.2 6.2 0 0 1 8 14.2 Z"/></svg><span>Dark mode</span></button>
-    <span class="who">NASA Space Apps 2026</span>
   </div>
 </div>
 <nav class="toc">{nav}</nav>
 {body}
-<footer class="foot small">Data: LakeTEMP (Korver et al., 2024, <i>Remote Sensing of Environment</i>), HydroLAKES (Messager et al., 2016), Natural Earth. Built for the NASA Space Apps Challenge 2026, Earth System Trend Detective.</footer>
+<footer class="foot small">Data: LakeTEMP (Korver et al., 2024, <i>Remote Sensing of Environment</i>), HydroLAKES (Messager et al., 2016), Natural Earth.</footer>
 </div>
 <script src="assets/data.js"></script>
 <script src="assets/app.js"></script>
